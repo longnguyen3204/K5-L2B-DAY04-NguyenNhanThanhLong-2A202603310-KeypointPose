@@ -1,0 +1,43 @@
+{
+ "mssv": "2A202603310",
+ "ten": "NguyenNhanThanhLong",
+ "pool_version": "d04-k5-v2",
+ "cvat_user": "long",
+ "project": "d04-keypoint",
+ "persons": [
+  "000000043968.jpg",
+  "000000137767.jpg",
+  "000000349521.jpg",
+  "000000390585.jpg",
+  "000000429594.jpg",
+  "000000056651.jpg",
+  "000000188804.jpg",
+  "000000467300.jpg",
+  "000000069971.jpg",
+  "000000210604.jpg",
+  "000000100510.jpg",
+  "000000272026.jpg"
+ ],
+ "faces": [
+  "face_204787.jpg",
+  "face_257657.jpg",
+  "face_362568.jpg",
+  "face_105668.jpg",
+  "face_137371.jpg",
+  "face_143959.jpg",
+  "face_301643.jpg",
+  "face_79367.jpg"
+ ],
+ "tasks": {
+  "persons": {
+   "task_id": 7,
+   "job_id": 7,
+   "task_name": "persons-NguyenNhanThanhLong"
+  },
+  "faces": {
+   "task_id": 8,
+   "job_id": 8,
+   "task_name": "faces-NguyenNhanThanhLong"
+  }
+ }
+}

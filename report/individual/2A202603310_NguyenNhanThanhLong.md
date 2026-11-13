@@ -157,25 +157,47 @@ Nguồn ảnh: COCO val2017.
 
 | Ảnh | Số skeleton | Số người dưới 60 px | Ca khó nhất |
 |---|---:|---:|---|
-| | | | |
-| | | | |
-| | | | |
+| 000000104800.jpg | 3 | 0 | Người ở sát rìa ảnh bên phải |
+| 000000188948.jpg | 3 | 0 | Người ở bên phải ảnh đang có hành động vung tay |
+| 000000507223.jpg | 3 | 4 | |
 
-Kết quả `src/check_submission.py` cho `HoVaTen_bonus_persons.zip`:
+Kết quả `src/check_submission.py` cho `NguyenNhanThanhLong_bonus_persons.zip`:
 
 ```text
-(dán ở đây)
+=== src\exports\NguyenNhanThanhLong_bonus_persons.zip (label `person`) ===
+  [CẢNH BÁO] 000000104800.jpg #1: cặp ankle nằm ngược phía so với các cặp còn lại. Có thể đổi trái/phải một cặp (`lr_swap`), hoặc tay / chân bắt chéo thật: kiểm lại.
+  [CẢNH BÁO] 000000507223.jpg #3: cặp ear nằm ngược phía so với các cặp còn lại. Có thể đổi trái/phải một cặp (`lr_swap`), hoặc tay / chân bắt chéo thật: kiểm lại.
+  [CẢNH BÁO] File có 3 ảnh, bài giao 12 ảnh. Xuất đúng task chưa?
+
+----- TÓM TẮT (dán vào báo cáo mục 5) -----
+- File person: NguyenNhanThanhLong_bonus_persons.zip
+  Số ảnh: 3 · số skeleton `person`: 9 · mỗi annotation 51 số
+  Skeleton theo ảnh: 000000104800=3, 000000188948=3, 000000507223=3
+  Cờ v: v=2 81 (53%) · v=1 42 (27%) · v=0 30 (20%)
+  num_keypoints trung bình: 13.7
+- Ghi chú: 30 điểm v = 0 vẫn mang tọa độ cũ (CVAT 2.x xuất như vậy; chuẩn COCO ghi 0, 0). Không phải lỗi: điểm v = 0 bị bỏ qua khi huấn luyện và khi chấm.
+- Số [LỖI]: 0 · số [CẢNH BÁO]: 3
+Kết quả: ĐẠT (đọc lại từng cảnh báo ở trên)
 ```
 
 ### B2 — 5 ảnh khuôn mặt đen trắng / hồng ngoại
 
-Ảnh không màu khó hơn ở điểm nào? Kính râm trên ảnh hồng ngoại có còn là `v = 1` không?
+Ảnh không màu khó hơn ở điểm nào? 
 
-...
+- Mất thông tin màu sắc: Giảm từ 3 kênh RGB xuống 1 kênh độ sáng, làm giảm lượng đặc trưng đầu vào.
+- Khó tách nền: Các vật thể khác màu nhưng cùng độ sáng sẽ bị hòa lẫn, khó xác định đường viền.
+- Dễ nhiễu sáng: Nhạy cảm hơn với bóng đổ và lóa sáng do thiếu dữ liệu màu để bù trừ.
+
+Kính râm trên ảnh hồng ngoại có còn là `v = 1` không?
+- Về thực tế vật thể: Vẫn là v = 1.
+- Về đặc trưng hình ảnh:
+	• Đa số tròng kính râm thông thường cho tia cận hồng ngoại đi xuyên qua, khiến kính biến thành trong suốt và làm lộ rõ mắt.
+	• Chỉ khi kính có lớp phủ chống tia IR chuyên dụng hoặc dùng camera nhiệt, kính mới giữ nguyên trạng thái tối đen/che khuất.
+
 
 ### B3 — Model so với nhãn của tôi (không tính điểm)
 
-- Demo đã dùng:
+- Demo đã dùng: 
 - Ảnh đã thử:
 
 1. Model có trả điểm cho khớp bị che, hay khớp ngoài ảnh không? Confidence ở các điểm đó thế nào?

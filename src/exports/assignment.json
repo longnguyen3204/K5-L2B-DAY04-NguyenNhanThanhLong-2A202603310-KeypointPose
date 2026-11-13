@@ -38,6 +38,28 @@
    "task_id": 8,
    "job_id": 8,
    "task_name": "faces-NguyenNhanThanhLong"
+  },
+  "persons-extra": {
+   "task_id": 9,
+   "job_id": 9,
+   "task_name": "persons-extra-NguyenNhanThanhLong"
+  },
+  "faces-extra": {
+   "task_id": 10,
+   "job_id": 10,
+   "task_name": "faces-extra-NguyenNhanThanhLong"
   }
- }
+ },
+ "persons_extra": [
+  "000000104800.jpg",
+  "000000188948.jpg",
+  "000000507223.jpg"
+ ],
+ "faces_extra": [
+  "face_274219.jpg",
+  "face_296417.jpg",
+  "face_317330.jpg",
+  "face_379585.jpg",
+  "face_507166.jpg"
+ ]
 }
